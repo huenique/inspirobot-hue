@@ -1,30 +1,26 @@
-#include <cpr/cpr.h>
+#include "inspirobot.hpp"
+#include "cli.hpp"
 
-using namespace std;
-
-cpr::Url url_string = cpr::Url{"http://inspirobot.me/api?generate=true"};
-cpr::Session session;
-
-std::string filename(std::string const &path)
+int main(int argc, char *argv[])
 {
-    return path.substr(path.find_last_of("/\\") + 1);
-}
-
-int fetchImage()
-{
-    session.SetUrl(url_string);
-    cpr::Response response = session.Get();
-    if (response.status_code == 200)
+    if (cmdOptionExists(argv, argv + argc, "-h"))
     {
-        ofstream ofstream = std::ofstream(filename(response.text));
-        session.SetUrl(cpr::Url{response.text});
-        session.Download(ofstream);
+        showHelp(argv);
     }
-    return 0;
-}
 
-int main(int argc, char **argv)
-{
-    fetchImage();
+    char *filename = getCmdOption(argv, argv + argc, "--file");
+
+    if (filename)
+    {
+        cpr::Session session;
+        if (filename[0] == 'i')
+        {
+            fetchImage(session);
+        }
+        else
+        {
+            fetchAudio(session);
+        }
+    }
     return 0;
 }
