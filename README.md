@@ -28,5 +28,5 @@ $ cmake --build .
 Run the generated executable
 
 ```
-$ ./inspirobot-hue
+$ ./inspirobot-hue -h
 ```
