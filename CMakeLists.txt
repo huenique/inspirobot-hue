@@ -1,7 +1,14 @@
 project(inspirobot-hue CXX)
 cmake_minimum_required(VERSION 3.16)
 
-add_executable(${PROJECT_NAME} src/inspirobot.cpp)
+set(
+    SOURCES
+    src/inspirobot.cpp
+    src/json.hpp
+    src/inspirobot.hpp
+    src/cli.hpp
+)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake) # Include Conan-generated file
 conan_basic_setup(TARGETS) # Introduce Conan-generated targets
