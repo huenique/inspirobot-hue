@@ -4,7 +4,6 @@
 #include <iostream>
 
 using json = nlohmann::json;
-using namespace std;
 
 const cpr::Url c_inspirobot = cpr::Url{"http://inspirobot.me/"};
 const cpr::Url c_genr_url = cpr::Url{"api?generate=true"};
@@ -31,7 +30,7 @@ std::tuple<cpr::Response, std::string> fetchSessionID(cpr::Session &session)
 
 void downloadFile(cpr::Session &session, cpr::Url &url_path)
 {
-    ofstream ofstream = std::ofstream(get_filename(url_path));
+    std::ofstream ofstream = std::ofstream(get_filename(url_path));
     session.SetUrl(url_path);
     session.Download(ofstream);
 }

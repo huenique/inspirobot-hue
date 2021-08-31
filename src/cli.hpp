@@ -15,13 +15,13 @@ void showHelp(char *argv[])
         "";
 
     std::cout << usage << "\n"
-              << endl;
+              << std::endl;
     std::cout << description << "\n"
-              << endl;
+              << std::endl;
     std::cout << positionalArgs << "\n"
-              << endl;
+              << std::endl;
     std::cout << optionallArgs << "\n"
-              << endl;
+              << std::endl;
 }
 
 char *getCmdOption(char **begin, char **end, const std::string &option)
