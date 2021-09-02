@@ -1,3 +1,5 @@
+#include <algorithm>
+
 void showHelp(char *argv[])
 {
     std::string inspirobot = std::string(argv[0]);
